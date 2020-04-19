@@ -194,6 +194,7 @@ if javascriptEnabled then
 	
 	repeat while found_slot is false
 		-- load the delivery slot page
+		log "loading page"
 		tell application "Safari"
 			-- opens in a new tab every time instead of just using open url request, which would prompt "Are you sure you want to send a form again?" and prevent this from running neatly in the background
 			tell window id amzn_win_id
