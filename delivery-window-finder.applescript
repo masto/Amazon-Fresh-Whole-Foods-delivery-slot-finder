@@ -253,7 +253,6 @@ if javascriptEnabled then
 		else if siteText contains slot_page_keyword and (siteText contains "AM" or siteText contains "PM") then
 			-- landed on delivery slot page and delivery slot selection drop down appears aka. slot found!
 			display notification "Found delivery slot!" with title "Amazon" sound name "Sosumi"
-			say "Delivery slot appeared. Try to checkout. Success not guaranteed"
 			
 			-- send text notification
 			if sendTexts then
