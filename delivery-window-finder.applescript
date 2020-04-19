@@ -201,8 +201,6 @@ if javascriptEnabled then
 				set current tab to last tab
 			end tell
 			if is_first_run is true then
-				-- minimizes window on the first iteration so it can run quietly in background
-				set miniaturized of window id amzn_win_id to true
 				set is_first_run to false
 			end if
 			
