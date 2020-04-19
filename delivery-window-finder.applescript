@@ -118,27 +118,14 @@ to restartCheckout(selected_cart_url, window_id)
 end restartCheckout
 
 
--- USER PROMPTS:
--- 1. Welcome message w/ instructions & disclaimer
-display dialog welcomeMsg with title "Welcome" with icon stop buttons {"Cancel", "Continue"} default button "Continue"
+set auto_ignore_oos to true
 
--- 2. Prompt whether to ignore oos or wait for user to review
-display dialog ignoreOosPromptMsg buttons {"Cancel", "A. Keep looking for slots", "B. Wait for me to review"} default button "A. Keep looking for slots" with title "Ignore Out Of Stock?" with icon note
-
-if result = {button returned:"A. Keep looking for slots"} then
-	set auto_ignore_oos to true
-else if result = {button returned:"B. Wait for me to review"} then
-	set auto_ignore_oos to false
-end if
-
-display dialog javascriptPermissionMsg with title "More access needed" buttons {"End Script", "Done"} with icon stop default button "Done"
-if result = {button returned:"Done"} then
-	set javascriptEnabled to true
-end if
+set javascriptEnabled to true
 
 if javascriptEnabled then
 	-- 3. Prompt user to enable text message notifications
 	-- TO-DO: consider converting this to a function
+	set promptForNumber to false
 	repeat while promptForNumber is true
 		-- checks if messages icon exists
 		try
@@ -194,16 +181,7 @@ if javascriptEnabled then
 		end if
 	end repeat
 	
-	-- 4. Prompt for delivery service type
-	set servicePrompt to display dialog "What delivery service do you want to use this script for?" buttons {"Cancel", "Whole Foods via Amazon.com", "Amazon Fresh"} with icon note with title "Which Service?"
-	if button returned of servicePrompt = "Whole Foods via Amazon.com" then
-		set selected_cart_url to wfm_cart_url
-	else if button returned of servicePrompt = "Amazon Fresh" then
-		set selected_cart_url to fresh_cart_url
-	end if
-	
-	display dialog configCompleteMsg buttons {"Cancel", "Continue"} with title "Configuration Complete" with icon note default button "Continue"
-	
+	set selected_cart_url to wfm_cart_url
 	
 	-- START SEARCH
 	-- create new empty window, with one empty tab
