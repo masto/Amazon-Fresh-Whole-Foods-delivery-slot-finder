@@ -205,7 +205,7 @@ if javascriptEnabled then
 			end if
 			
 			-- wait for the page to load
-			delay 30
+			delay 8
 			
 			-- get the text on the page
 			set siteText to (text of last tab of window id amzn_win_id) as string
@@ -224,7 +224,7 @@ if javascriptEnabled then
 			log "no slots found"
 			
 			-- delay so you don't spam Amazon's site
-			delay 10
+			delay 20
 		else if siteText contains oos_keyword then
 			-- landed on out of stock page
 			
@@ -235,7 +235,7 @@ if javascriptEnabled then
 				log "Items out of stock were ignored"
 				say "ignored out of stock item"
 				-- delay to wait for the next page to load(it might be another oos page or the delivery slot page
-				delay 20
+				delay 10
 				
 				-- closes the tab so the tab can be reloaded and processed anew
 				tell application "Safari"
